@@ -1,0 +1,149 @@
+---
+title: "Somalia: COVID-19 Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+    #runtime: shiny 
+---
+```{r setup, include=FALSE}
+#load required packages
+library(flexdashboard)
+library(shiny)
+library(tidyverse)
+library(leaflet)
+library(leaflet.extras)
+library(DT)
+library(highcharter)
+library(plotly)
+library(sf)
+```
+
+```{r data preparation, include=FALSE}
+data <- read.csv("daily_report.csv", stringsAsFactors = F, header = T) %>% 
+  dplyr::mutate(active_cases = cases - Recovery - Death)
+# organizing date data
+data$date <- as.Date(data$date, "%d/%m/%Y")
+# uploading district info
+som <- read.csv("district_info.csv", stringsAsFactors = F, header = T)
+
+#loading shapefile
+shp <- read_sf("shp/som_adm2.shp")
+```
+
+
+Key Figures
+=======================================================================
+
+Row {data-width=400}
+-----------------------------------------------------------------------
+
+### confirmed {.value-box}
+
+```{r}
+
+valueBox(
+  value = paste(format(sum(data$cases), big.mark = ","), "", sep = " "),
+  caption = "Total confirmed cases",
+  #icon = "fas fa-user-md",
+)
+```
+
+### death {.value-box}
+
+```{r}
+valueBox(
+  value = paste(format(sum(data$Death), big.mark = ","), "", sep = " "),
+  caption = "Death cases",
+  icon = "skull-crossbones"
+)
+
+```
+
+
+### recovery {.value-box}-
+
+```{r}
+valueBox(
+  value = paste(format(sum(data$Recovery), big.mark = ","), "", sep = " "),
+  caption = "Recovery cases",
+  icon = "user-minus"
+)
+
+```
+
+Row
+-----------------------------------------------------------------------
+
+### **Dailly Confired Cases in the Country**
+
+```{r}
+plotly::plot_ly(data = data) %>%
+  plotly::add_trace(
+    x = ~date,
+    # y = ~active_cum,
+    y = ~cases,
+    type = "scatter",
+    mode = "lines+markers",
+    # name = "Active",
+    name = "Confirmed"
+  ) %>% 
+  plotly::add_trace(
+    x = ~date,
+    y = ~Death,
+    type = "scatter",
+    mode = "lines+markers",
+    name = "Death"
+  ) %>% 
+  plotly::layout(
+    title = "",
+    yaxis = list(title = "Cumulative number of cases"),
+    xaxis = list(title = "Date"),
+    legend = list(x = 0.1, y = 0.9),
+    hovermode = "compare"
+  )
+
+plotly
+
+```
+
+Saverity Maping
+=========================================================
+### (*use + and - icons to zoom in/out*)
+
+```{r}
+som <- read.csv("district_info.csv", stringsAsFactors = F)
+
+som %>% 
+  leaflet() %>% 
+  addProviderTiles(providers$CartoDB.Positron) %>%
+  
+addCircleMarkers(lng = ~long,
+                 lat = ~lat,
+                 stroke = FALSE,
+                 fillOpacity = 0.6,
+                 #radius = ~cases,
+                 popup = leafpop::popupTable(som, 
+                                             feature.id = FALSE,
+                                             row.numbers = FALSE,
+                                             zcol = c("state", "region", "location", "cases")), radius = 5) %>% 
+  # Adding polygon on the map!
+  addPolygons(data = shp,
+        options = pathOptions(clickable = FALSE),
+        color = "#333333",
+        weight = 0.6,
+        fill = FALSE,
+        fillOpacity = 0.1,
+        opacity = 0.4,) %>% 
+  # add small mini map at the bottom
+  addMiniMap(tiles =  providers$Esri.WorldGrayCanvas,
+             toggleDisplay = TRUE)
+
+```
+
+
+
+
+
+
+

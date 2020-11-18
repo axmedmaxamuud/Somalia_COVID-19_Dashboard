@@ -1,0 +1,44 @@
+state,region,location,cases,long,lat
+Somaliland,Awdal,Borama,40,43.18392,9.93869
+Banadir,Banadir,Abdul-Aziz,30,45.36,2.04045
+Banadir,Banadir,Boondeere,63,45.34,2.04555
+Banadir,Banadir,Dayniile,64,45.28,2.073503
+Banadir,Banadir,Dharkenly,89,45.26019164,2.017896335
+Banadir,Banadir,Hamar jabjab,60,45.33,2.027641
+Banadir,Banadir,Hamar weyne,34,45.34,2.033731
+Banadir,Banadir,Hawlwadaag,68,45.32,2.048031
+Banadir,Banadir,Heliwa,28,45.3767288,2.082946275
+Banadir,Banadir,Hodan,218,45.3,2.043926
+Banadir,Banadir,Kahda,19,,
+Banadir,Banadir,Karan,32,45.36653053,2.054753046
+Banadir,Banadir,Madina,202,,
+Banadir,Banadir,Shangaani,15,45.35,2.037711
+Banadir,Banadir,Shiblis,39,45.35,2.047638
+Banadir,Banadir,Waberi,92,45.31,2.019514
+Banadir,Banadir,Wardhiglay,147,45.33,2.054921
+Banadir,Banadir,Yaqshid,50,45.35,2.067771
+Puntland,Bari,Bosaso,27,49.18063,11.28366
+South West State,Bay,Baidoa,41,43.6469,3.11718
+South West State,Bay,Burhakaba,3,44.08333,2.78333
+Somaliland,Waqooyi Galbeed,Hargeisa,273,44.06678,9.55975
+Galmudug State,Galgadud,Dhusamareeb,1,46.386698,5.537643
+Jubaland,Gedo,Belet Hawa,1,41.89431,3.78074
+Puntland,Karkar,Gardo,34,,
+Puntland,Karkar,Waciya,9,,
+Jubaland,Lower Juba,Kismayo,135,42.546261,-0.36029
+South West State,Lower Shabele,Afgooye,3,45.118698,2.14158
+South West State,Lower Shabele,Brava,35,44.03043,1.11477
+South West State,Lower Shabele,Marka,21,44.76388,1.71305
+Hirshabelle,Middle Shabele,Balad,3,45.504799,2.62667
+Hirshabelle,Middle Shabele,Jowhar,2,45.496818,2.780875
+Hirshabelle,Middle Shabele,Runigood,1,46.77207,3.55585
+Galmudug State,Galgadud,Cadado,51,,
+Galmudug State,Mudug,Galkacyo_South,11,,
+Puntland,Mudug,Galkacyo_North,33,,
+Puntland,Mudug,Goldogob,1,,
+Puntland,Nugal,Garowe,85,48.48188,8.40635
+Somaliland,Sahil,Berbera,8,45.01474,10.44254
+Somaliland,Sanaag,Badhan,1,48.30591,11.00322
+Somaliland,Sool,Taleh,1,48.42077,9.14839
+Somaliland,Togdher,Burao,5,45.537472,9.52749
+Somaliland,Togdher,Odweyne,1,45.06358,9.40701
